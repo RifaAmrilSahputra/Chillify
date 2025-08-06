@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <title>Tentang</title>
+
+    <style>
+            .normal-text {
+                font-weight: normal;
+                font-size: 16px;
+            }
+
+            .custom-size {
+                width: 200px; 
+                height: 150px; 
+            }
+
+            .small-image {
+                width: 100px; 
+                height: 100px;
+            }
+
+            .fixed-section {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 100;
+                background-color: rgba(4, 3, 3, 0.8); 
+                transition: background-color 0.5s;
+            }
+
+            body {
+                background-color: rgb(228, 219, 219); 
+            }
+
+            .content {
+                margin-top: 30px; 
+                padding-bottom: 50px; 
+            }
+
+            .content2 {
+                margin-top: 50px; 
+                padding-bottom: 30px;
+            }
+
+            .content3 {
+                margin-top: 30px; 
+                padding-bottom: 300px; 
+            }
+
+            .content4 {
+                margin-top: 0px; 
+                padding-bottom: 10px; 
+            }
+
+            #sticky-footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                margin-top: 20px; 
+            }
+
+            .custom-size {
+                width: 100%; 
+                max-height: 300px; 
+                object-fit: cover; 
+                margin-top: 20px;
+            }
+
+            .animated {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s, transform 0.5s;
+            }
+
+            .animated2 {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 1s, transform 1s;
+            }
+
+            .animated.animate {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .next-page-link {
+                position: fixed;
+                bottom: 40px; 
+                right: 20px;
+                background-color: rgb(3, 168, 30); 
+                color: #fff; 
+                border-radius: 50%; 
+                width: 40px;
+                height: 40px; 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px; 
+                text-decoration: none;
+            }
+
+            .prev-page-link {
+                position: fixed;
+                bottom: 20px; 
+                right: 20px; 
+                background-color:  rgb(3, 168, 30); 
+                color: #fff; 
+                border-radius: 50%; 
+                width: 40px; 
+                height: 40px; 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px; 
+                text-decoration: none;
+            }
+            .prev-page-link, .next-page-link {
+                position: fixed;
+                bottom: 50px; 
+                font-size: 24px; 
+            }
+
+            .prev-page-link {
+                left: 20px; 
+            }
+
+    </style>
+  </head>
+
+  <body>
+        <!--   Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-section" id="navbar">
+            <div class="container ">
+                <a id="Chillify" class="navbar-brand" href="#">Chillify</a>
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">tentang</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">layanan</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">kebun</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">tim</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">tim</a>
+                    </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link " href="{{ url_for('index') }}">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('tentang') }}">Tentang</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('layanan') }}">Layanan</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="{{ url_for('kebun') }}">Kebun</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('tim') }}">Tim</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a>
+                  </li>
+             </ul>
+            </div>
+        </nav>
+        <!-- Navbar End  -->
+
+                <div class="container mt-5 animated text-center " data-animation="fadeIn" data-delay="100" id="kebun" >
+                    <h1 style="border-bottom: 2px solid black; display: inline-block;">Kebun</h1>
+                </div>
+
+                <div class="container mt-5 content animated" data-animation="fadeIn" data-delay="200">
+                    <div class="row">
+                        <div class="col-md-6" style="color: black;">
+                            <div class="text-box">
+                                <h2 class="text-center animated" data-animation="fadeIn" data-delay="200">Panduan Budidaya Cabai</h2>
+                                <p class="text-justify">Ini adalah panduan singkat untuk membantu Anda dalam budidaya cabai yang sehat dan produktif:</p>
+                                <ul class="text-justify">
+                                    <li>Pilih varietas cabai yang sesuai dengan iklim dan tanah di lokasi Anda.</li>
+                                    <li>Persiapkan lahan dengan baik, pastikan tanahnya subur dan memiliki drainase yang baik.</li>
+                                    <li>Tanam bibit cabai pada jarak yang tepat sesuai dengan jenis cabai yang Anda tanam.</li>
+                                    <li>Memberikan cukup air, tetapi hindari kelebihan air yang dapat membusukkan akar cabai.</li>
+                                    <li>Pupuk tanaman secara teratur untuk memastikan pertumbuhan yang sehat.</li>
+                                    <li>Pantau tanaman cabai Anda untuk mengidentifikasi hama dan penyakit serta mengambil tindakan sesuai.</li>
+                                    <li>Panen cabai saat sudah matang, dan gunakan dalam masakan Anda.</li>
+                                </ul>
+                            </div>    
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-box">
+                                <p class="text-center" style="color: black;">Untuk informasi lebih lanjut, kunjungi <a href="https://kumparan.com/nanda-dc/panduan-cara-budidaya-cabai-untuk-pemula-lengkap/full" style="color: blue;">Panduan Budidaya Cabai Lengkap</a>.</p>
+                                <div class="container text-center mt-4">
+                                    <iframe class="w-100" height="368" src="https://www.youtube.com/embed/De1RKJ8dAhw?si=vKP0wTq81WaESM9f"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="text-center mt-3 animated" data-animation="fadeIn" data-delay="300" style=" padding: 10px;">
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 2" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-top: 0px; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                    <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                        <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                    </div>
+                </div>
+
+            <div class="container mt-5 content2 ">
+                <h2 class="text-center animated" data-animation="fadeIn" data-delay="500" style="color: black;">Panduan Mengidentifikasi dan Mengatasi Hama serta Penyakit pada Cabai</h2>
+                <div class="text-center animated" data-animation="fadeIn" data-delay="500">
+                    <p style="color: black;" >Cabai dapat rentan terhadap berbagai hama dan penyakit. Berikut adalah panduan singkat tentang cara mengidentifikasi dan mengatasi masalah yang umumnya memengaruhi tanaman cabai Anda</p>
+                </div>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center animated" data-animation="fadeIn" data-delay="600">
+                                    <h3>Hama-hama Umum</h3>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700"  src="static/imagehama/kutu daun.jpg" alt="Kutu Daun">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">Kutu Daun</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan daun keriput dan permukaan lengket. Gunakan sabun cuci piring yang diencerkan sebagai insektisida alami.</p>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700" src="static/imagehama/kutu kebul.jpg" alt="Kutu Kebul">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">Kutu Kebul</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan daun yang mengeriting dan menguning. Gunakan minyak neem di campur dengan air dan menyemprotkannya pada tanaman secara teratur untuk mengontrol populasi kutu kebul.</p>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700" src="static/imagehama/thrips.jpg" alt="Thrips">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">Thrips</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan daun berubah warna dan terdapat garis-garis putih keperakan. Gunakan minyak neem untuk mengendalikannya.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="text-center animated" data-animation="fadeIn" data-delay="700">
+                                    <h3>Penyakit Umum</h3>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700" src="static/imagehama/busuk batang.jpg" alt="Busuk Batang">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">Busuk Batang</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan batang busuk dan warna daun yang menguning. Perbaiki drainase tanah dan hindari kelebihan penyiraman.</p>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700" src="static/imagehama/mosaik.jpg" alt="Mosaik Cabai">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">Mosaik Cabai</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan daun yang bercorak seperti mozaik. lakukan penegecekan secara rutin dan buang tanaman yang terinfeksi untuk mencegah penyebaran secara terus menerus.</p>
+                                </div>
+                                <div class="vertical-image text-center">
+                                    <img class="rounded-circle small-image animated" data-animation="fadeIn" data-delay="700" src="static/imagehama/busuk.jpg" alt="busuk buah">
+                                    <p class="font-weight-bold animated" data-animation="fadeIn" data-delay="700">busuk buah</p>
+                                    <p class="animated" data-animation="fadeIn" data-delay="700">Identifikasi dengan bercak-bercak basah pada buah. Pertahankan kebersihan di sekitar tanaman dan hindari penyiraman di malam hari.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <p class="animated" data-animation="fadeIn" data-delay="700">Penting untuk selalu memantau tanaman Anda secara teratur, dan segera ambil tindakan saat Anda melihat tanda-tanda hama atau penyakit. Penggunaan metode organik dan pengendalian hama yang alami sangat dianjurkan untuk menjaga cabai Anda tetap sehat.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3 animated" data-animation="fadeIn" data-delay="300" style=" padding: 10px;">
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 2" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block;margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+                <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                    <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+                </div>
+            </div>
+            
+            <div class="container mt-5  content3 text-center">
+                <h2 class="text-center mt-8 content4 animated" style="border-bottom: 2px solid black; display: inline-block;" data-animation="fadeIn" data-delay="700" style="color: black;">Chili Garden Gallery</h2>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/panen cabe.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabe bagus3.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/panen cabe2.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabe bagus4.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/kebun cabe.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabai subur.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/panen cabai2.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/pohon cabai.jpg" alt="cabai">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/panen cabai.jpg" alt="cabe bagus 4">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabe bagus2.png" alt="cabe bagus 4">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabe bagus.jpg" alt="cabe bagus 4">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gallery-item d-flex justify-content-center align-items-center animated" data-animation="fadeIn" data-delay="600">
+                            <img class="img-fluid custom-size" src="static/imagekebun/cabai palstik.jpg" alt="cabe bagus 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer id="sticky-footer" class="footer bg-dark text-white text-center py-2"">
+                &copy; 2023 Kelompok 2
+            </footer>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <script src="static/js/script.js"></script>
+            <script src="static/js/cript2.js" ></script>
+            <script src="static/js/script3.js" ></script>
+            <script>
+                function showPage(page) {
+                    window.location.href = page;
+                }
+            </script>
+
+              <a href="{{ url_for('layanan') }}" class="prev-page-link">
+                <span class="next-page-arrow">&larr;</span>
+              </a>
+              
+              <a href="{{ url_for('tim') }}" class="next-page-link">
+                <span class="next-page-arrow">&rarr;</span>
+              </a>
+    </body>
+</html>

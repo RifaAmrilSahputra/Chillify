@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <title>Tentang</title>
+    <style>
+        .normal-text {
+            font-weight: normal;
+            font-size: 22px;
+          }
+
+        .fixed-section {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             z-index: 100;
+             background-color: rgba(4, 3, 3, 0.8);
+             transition: background-color 0.5s;
+         }
+         
+         .service-box {
+             background: #f9f9f9;
+             padding: 20px;
+             margin: 10px;
+             text-align: center;
+         }
+
+         .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+          }
+
+        .animated.animate {
+            opacity: 1;
+            transform: translateY(0);
+         }
+
+        body {
+            background-color: rgb(228, 219, 219); 
+        }
+
+        .content {
+              margin-top: 30px;
+              padding-bottom: 10px;
+          }
+
+        .content2 {
+              margin-top: 15px; 
+              padding-bottom: 80px; 
+          }
+
+          .content3 {
+              margin-top: 30px; 
+              padding-bottom: 10px; 
+          }
+
+          .next-page-link {
+              position: fixed;
+              bottom: 40px; 
+              right: 20px; 
+              background-color: rgb(3, 168, 30); 
+              color: #fff; 
+              border-radius: 50%;
+              width: 40px; 
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 24px; 
+              text-decoration: none;
+            }
+
+            .prev-page-link {
+              position: fixed;
+              bottom: 20px; 
+              right: 20px; 
+              background-color:  rgb(3, 168, 30); 
+              color: #fff;
+              border-radius: 50%; 
+              width: 40px; 
+              height: 40px; 
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 24px; 
+              text-decoration: none;
+            }
+            .prev-page-link, .next-page-link {
+              position: fixed;
+              bottom: 50px; 
+              font-size: 24px; 
+            }
+
+            .prev-page-link {
+              left: 20px; 
+            }
+
+            .result-image {
+              width: 300px;
+              height: 300px;
+              /* Pilihan gaya tambahan, seperti memusatkan gambar */
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            #sticky-footer {
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+           }
+     </style>
+  </head>
+
+  <body>
+    <!--   Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-section" id="navbar">
+        <div class="container ">
+            <a id="Chillify" class="navbar-brand" href="#">Chillify</a>
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="{{ url_for('index') }}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{{ url_for('tentang') }}">Tentang</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('layanan') }}">Layanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('kebun') }}">Kebun</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('tim') }}">Tim</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- Navbar End  -->
+
+    <div class="container mt-5 " id="Layanan">
+        <h1 class="text-center animated" data-animation="fadeIn" data-delay="0">Layanan</h1>
+    </div>
+    
+        <div class="container mt-5"  >
+            <h1 class="text-center normal-text animated" data-animation="fadeIn" data-delay="300" >Kami menawarkan layanan unik yang akan membantu Anda memantau pertumbuhan cabai Anda dengan mudah. Layanan kami mencakup:</h1>
+            <div class="row">
+                <div class="container mt-5 content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-3 mb-4"  >
+                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="300" >
+                                <div ><i class="bx bx-chat"></i></div>
+                                <h4><a>Pemantauan Real-Time</a></h4>
+                                <p>Pantau perkembangan cabai Anda setiap saat dengan data yang akurat.</p>
+                            </div>
+                        </div>
+                
+                        <div class="col-md-6 col-lg-3 mb-4" >
+                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="500" >
+                                <div class="icon"><i class="bx bx-camera"></i></div>
+                                <h4><a>Analisis Data</a></h4>
+                                <p>Kami memberikan analisis data yang membantu Anda memahami kebutuhan tanaman cabai Anda.</p>
+                            </div>
+                        </div>
+                
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="800"  >
+                                <div class="icon"><i class="bx bx-chat"></i></div>
+                                <h4><a>Pantau dari Mana Saja</a></h4>
+                                <p>Pantau kebun cabai Anda dari mana saja dengan akses internet.</p>
+                            </div>
+                        </div>
+                      </div>  
+                    </div>
+                </div>
+          </div>
+            
+            <div class="text-center mt-3 animated" data-animation="fadeIn" data-delay="300" style="padding: 10px;">
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 2" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-top: 0px; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
+                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+              </div>
+          </div>
+            
+          <section id="imagedetection" class="services">
+            <div class="container text-center animated" data-animation="fadeIn" data-delay="300">
+                <div class="content3">
+                    <p>Siap untuk memulai? Klik tombol di bawah ini untuk memulai pemantauan sekarang!</p>
+                </div>
+            </div>
+        
+            <div id="aplikasi" class="container content2">
+                <div class="row justify-content-start">
+                    <div class="col-md-6 left-section">
+                        <div class="right-content animated" data-animation="fadeIn" data-delay="300">
+                            <div class="section-title">
+                                <h2>Cara Penggunaan Sistem Deteksi</h2>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon">
+                                    <ion-icon name="share-outline"></ion-icon>
+                                </div>
+                                <div class="step-content">
+                                    <h5><strong>1. Klik tombol Pantau Sekarang</strong></h5>
+                                    <p>Anda perlu menyiapkan gambar tanaman cabai Anda. Pastikan format gambar yang diunggah adalah .jpg</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon">
+                                    <ion-icon name="rocket-outline"></ion-icon>
+                                </div>
+                                <div class="step-content">
+                                    <h5><strong>2. Menunggu Hasil Keluar</strong></h5>
+                                    <p>Setelah unggah gambar, sistem kami akan memproses dan hasil dari prediksi akan muncul segera.</p>
+                                </div>
+                            </div>
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="image-preview text-left">
+                                    <label for="input_gambar">Pilih File Gambar</label>
+                                    <input type="file" id="input_gambar" name="file">
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-light btn-lg" type="submit"><i class="fas fa-camera"></i> Pantau Sekarang</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        
+                    <div id="hasil_prediksi">
+                      {% if predictions %}
+                          <img src="{{ result_image }}" alt="Hasil Prediksi" class="result-image">
+                          <p>{{ result_description }}</p>
+                      {% else %}
+                          <p>Tidak ada hasil prediksi.</p>
+                      {% endif %}
+                    </div>
+                  
+                    {% if error_message %}
+                        <p style="color: red;">{{ error_message }}</p>
+                    {% endif %}
+                  
+                </div>
+            </div>
+          </section>
+
+            <footer id="sticky-footer" class="footer bg-dark text-white text-center py-2">
+              &copy; 2023 Kelompok 2
+            </footer>
+            
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1U"></script>
+            <script src="static/js/script.js"></script>
+            <script src="static/js/cript2.js" ></script>
+            <script src="static/js/script3.js" ></script>
+            <script>
+              function showPage(page) {
+                  window.location.href = page;
+              }
+            </script>
+
+            <a href="{{ url_for('tentang') }}" class="prev-page-link">
+              <span class="next-page-arrow">&larr;</span>
+            </a>
+
+            <a href="{{ url_for('kebun') }}" class="next-page-link">
+              <span class="next-page-arrow">&rarr;</span>
+            </a>
+        </body>
+</html> 
