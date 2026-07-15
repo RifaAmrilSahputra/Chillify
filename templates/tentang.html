@@ -1,319 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Tentang</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kenali Chillify, teman digital untuk pemantauan tanaman cabai.">
+    <title>Tentang Chillify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        .normal-text {
-            font-weight: normal;
-            font-size: 16px;
-        }
-
-        .fixed-section {
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 100%;
-             z-index: 100;
-             background-color: rgba(4, 3, 3, 0.8); 
-             transition: background-color 0.5s;
-         }
-
-         .animated {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-          }
-
-
-          .animated.animate {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-          }
-
-          .left-content {
-            flex: 1;
-          }
-
-          .right-content {
-            flex: 1;
-          }
-
-          .content {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-          }
-
-          .service-box {
-              background: whitesmoke;
-              padding: 20px;
-              margin: 10px;
-              text-align: center;
-              border-radius: 10px; 
-          }
-
-          .icon-box {
-              background: rgb(3, 168, 30);
-              padding: 20px;
-              margin: 10px;
-              text-align: center;
-              border-radius: 10px; 
-           }
-
-          body {
-              background-color: rgb(228, 219, 219); 
-           }
-
-          .content {
-              margin-top: 30px; 
-              padding-bottom: 10px; 
-          }
-
-          .content1 {
-              margin-top: 30px; 
-              padding-bottom: 10px; 
-          }
-
-          .content2 {
-              margin-top: 30px; 
-              padding-bottom: 80px; 
-          }
-
-          #sticky-footer {
-              position: fixed;
-              bottom: 0;
-              width: 100%;
-              margin-top: 20px;
-          }
-
-          .next-page-link {
-              position: fixed;
-              bottom: 40px; 
-              right: 20px;
-              background-color: rgb(3, 168, 30); 
-              color: #fff; 
-              border-radius: 50%; 
-              width: 40px; 
-              height: 40px; 
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 24px;
-              text-decoration: none;
-            }
-
-            .prev-page-link {
-              position: fixed;
-              bottom: 20px; 
-              right: 20px; 
-              background-color:  #28a745; 
-              color: #fff; 
-              border-radius: 50%; 
-              width: 40px; 
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 24px; 
-              text-decoration: none;
-            }
-            .prev-page-link, .next-page-link {
-              position: fixed;
-              bottom: 50px; 
-              font-size: 24px; 
-            }
-
-            .prev-page-link {
-              left: 20px; 
-            }
+      :root { --forest: #153d2b; --leaf: #2f7d4d; --lime: #d8f06a; --cream: #f6f5ef; --ink: #1a2d23; }
+      * { box-sizing: border-box; }
+      body { color: var(--ink); background: var(--cream); font-family: "DM Sans", sans-serif; }
+      .navbar { background: rgba(21, 61, 43, .9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.12); }
+      .navbar-brand { font-size: 1.4rem; font-weight: 700; letter-spacing: -.04em; }
+      .brand-mark { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: .45rem; border-radius: 9px; color: var(--forest); background: var(--lime); font-size: .95rem; }
+      .nav-link { color: rgba(255,255,255,.76) !important; font-size: .94rem; font-weight: 500; }
+      .nav-link:hover, .nav-link.active { color: #fff !important; }
+      .navbar-toggler { border-color: rgba(255,255,255,.45); }
+      .navbar-toggler:focus { box-shadow: 0 0 0 .18rem rgba(216,240,106,.32); }
+      .page-hero { padding: 10rem 0 4.75rem; color: #fff; background: var(--forest); overflow: hidden; position: relative; }
+      .page-hero::after { content: ""; position: absolute; width: 29rem; height: 29rem; top: -14rem; right: -8rem; border: 1px solid rgba(216,240,106,.55); border-radius: 50%; box-shadow: 0 0 0 2.7rem rgba(216,240,106,.07), 0 0 0 5.4rem rgba(216,240,106,.04); }
+      .page-hero .container { position: relative; z-index: 1; }
+      .eyebrow, .section-label { color: var(--lime); font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+      .eyebrow { display: flex; align-items: center; gap: .55rem; }
+      .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+      h1, h2 { font-family: "Playfair Display", serif; font-weight: 700; letter-spacing: -.04em; }
+      h1 { max-width: 680px; margin: .9rem 0 1rem; font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1.06; }
+      .hero-copy { max-width: 610px; color: rgba(255,255,255,.8); font-size: 1.1rem; line-height: 1.75; }
+      .about-section { padding: 6rem 0; }
+      h2 { margin: .6rem 0 1rem; font-size: clamp(2.15rem, 4vw, 3.35rem); line-height: 1.12; }
+      .body-copy { color: #587164; line-height: 1.8; }
+      .image-panel { min-height: 420px; border-radius: 22px; background: linear-gradient(180deg, rgba(18, 54, 35, .05), rgba(18, 54, 35, .35)), url("{{ url_for('static', filename='imagekebun/cabai subur.jpg') }}") center/cover; box-shadow: 0 24px 45px rgba(24, 57, 39, .14); }
+      .value-list { display: grid; gap: 1rem; margin-top: 2rem; padding: 0; list-style: none; }
+      .value-list li { display: flex; gap: .85rem; align-items: flex-start; color: #426052; }
+      .check { display: grid; flex: 0 0 auto; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #e2f1d8; color: var(--leaf); font-size: .8rem; font-weight: 700; }
+      .why-section { padding: 5.5rem 0; background: #eaf0e6; }
+      .why-heading { max-width: 470px; }
+      .why-heading .section-label { color: var(--leaf); }
+      .why-heading p { color: #587164; line-height: 1.75; }
+      .reason-card { height: 100%; padding: 1.6rem; border: 1px solid rgba(47,125,77,.12); border-radius: 18px; background: #fff; }
+      .reason-number { color: var(--leaf); font-size: .82rem; font-weight: 700; letter-spacing: .1em; }
+      .reason-card h3 { margin: 1.25rem 0 .7rem; font-size: 1.15rem; font-weight: 700; }
+      .reason-card p { margin: 0; color: #638073; font-size: .94rem; line-height: 1.7; }
+      .cta { padding: 4.75rem 0; text-align: center; color: #fff; background: linear-gradient(110deg, #1b5337, #286c45); }
+      .cta h2 { max-width: 630px; margin: 0 auto 1rem; }
+      .cta p { max-width: 510px; margin: 0 auto 1.8rem; color: rgba(255,255,255,.8); }
+      .btn-lime { padding: .86rem 1.3rem; border: 0; border-radius: 999px; background: var(--lime); color: var(--forest); font-weight: 700; }
+      .btn-lime:hover { background: #e6f888; color: var(--forest); }
+      footer { padding: 1.2rem 0; background: #102c1f; color: rgba(255,255,255,.7); font-size: .9rem; }
+      @media (max-width: 991.98px) { .navbar-collapse { padding: .8rem 0 .2rem; } .image-panel { min-height: 330px; } }
+      @media (max-width: 575.98px) { .page-hero { padding-top: 8.5rem; } .about-section, .why-section { padding: 4rem 0; } }
     </style>
   </head>
-
   <body>
-      <!--   Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-section" id="navbar">
-        <div class="container ">
-            <a id="Chillify" class="navbar-brand" href="#">Chillify</a>
-            <ul class="navbar-nav ml-auto">
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#">dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">tentang</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">layanan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">kebun</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">tim</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">tim</a>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link " href="{{ url_for('index') }}">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('tentang') }}">Tentang</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('layanan') }}">Layanan</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('kebun') }}">Kebun</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('tim') }}">Tim</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a>
-              </li>
-            </ul>
-        </div>
-      </nav>
-    <!-- Navbar End  -->
-
-    <h1 class="text-center my-5 ">Tentang</h1>
-      <section id="about" class="about">
-          <div class="container">
-            <div class="row content1">
-              <div class="left-content animated" data-animation="fadeIn" data-delay="200" style="margin-top: -50px;">
-                <h1>Apa itu chilify?</h1>
-                <h3 class="normal-text" >Kami telah melatih algoritma deep learning untuk memantau pertumbuhan tanaman cabai.</h3>
-              </div>
-              <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                <p>
-                  Chilify merupakan artificial intelligence (Kecerdasan Buatan) berbasis website yang dapat memantau perkembangan tanaman cabai Anda secara real-time, memantau tingkat kelembaban tanah, suhu, intensitas cahaya, dan banyak parameter lainnya. Ini akan membantu Anda merawat tanaman cabai Anda dengan lebih baik, mengoptimalkan pertumbuhannya, dan meningkatkan hasil panen.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Akurasi yang tinggi</li>
-                  <li><i class="ri-check-double-line"></i> Mudah digunakan</li>
-                  <li><i class="ri-check-double-line"></i> Gratis</li>
-                </ul>
-                <p class="fst-italic">
-                  Chilify memberikan solusi revolusioner untuk memantau pertumbuhan tanaman cabai Anda dengan mudah dan akurat.
-                </p>
-              </div>
-            </div>
-          </div>
-      </section>
-
-      <div class="text-center mt-3 animated" data-animation="fadeIn" data-delay="300" style=" padding: 10px;">
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 2" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-top: 0px; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-        <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-            <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-        </div>
-      <div style="display: inline-block; margin-right: 5px; margin-left: 50px;">
-          <img src="static/imagekebun/cabe hijau.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true">♧</span>Chillify</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNavigation"><ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Beranda</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('tentang') }}">Tentang</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('layanan') }}">Layanan</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('kebun') }}">Kebun</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('tim') }}">Tim</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a></li>
+        </ul></div>
       </div>
-    </div>
+    </nav>
 
-      <section id="why-us" class="why-us">
-        <div class="container">
-    
-            <div class="icon-boxes d-flex flex-column justify-content-center content2">
-              <div class="row">
-                <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                  <div class="icon-box mt-4 mt-xl-0" style="margin-top: 200px;">
-                    <i class="bx bx-leaf"></i>
-                    <h1 style="color: white;">Kenapa memilih chilify?</h1>
-                    <p style="color: white;" >Chilify adalah pilihan terbaik untuk penggemar cabai dan para petani. Inilah mengapa Anda harus memilih kami:</p>
-                  </div>
-                </div>
+    <main>
+      <section class="page-hero"><div class="container"><p class="eyebrow">Tentang kami</p><h1>Teknologi sederhana untuk kebun cabai yang lebih terawat.</h1><p class="hero-copy">Chillify hadir untuk membantu Anda mengenali kondisi daun cabai melalui analisis gambar, sehingga pemantauan kebun dapat dimulai dengan lebih mudah.</p></div></section>
 
-            <div class="col-lg-8 d-flex align-items-stretch">
-              <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
-                  <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                    <div class="service-box mt-4 mt-xl-0" style="width: 300px; height: 200px; background-color: whitesmoke " >
-                      <i class="bx bx-leaf"></i>
-                      <h4 class="text-center">Pemantauan Real-Time:</h4>
-                      <p class="text-center">Dapatkan akses langsung ke data pertumbuhan cabai Anda secara real-time, sehingga Anda selalu tahu apa yang terjadi di kebun cabai Anda.</p>
-                    </div>
-                  </div>
-                  <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                    <div class="service-box mt-4 mt-xl-0" style="width: 300px; height: 200px; margin-top: 200px;">
-                      <i class="bx bx-leaf"></i>
-                      <h4 class="text-center">Kemudahan Penggunaan:</h4>
-                      <p class="text-center">Chilify dirancang untuk mudah digunakan, bahkan bagi pemula sekalipun. Tidak diperlukan pengetahuan teknis khusus.</p>
-                    </div>
-                  </div>
-                  <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                    <div class="service-box mt-4 mt-xl-0" style="width: 300px; height: 210px; margin-left: 200px;">
-                      <i class="bx bx-leaf"></i>
-                      <h4 class="text-center">Optimalkan Pertumbuhan:</h4>
-                      <p class="text-center">Dengan informasi yang akurat, Anda dapat mengoptimalkan perawatan tanaman cabai Anda, termasuk penyiraman dan nutrisi yang diperlukan.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section class="about-section"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><span class="section-label">Apa itu Chillify?</span><h2>Teman digital untuk memahami kondisi tanaman cabai.</h2><p class="body-copy">Chillify adalah aplikasi berbasis web yang memanfaatkan kecerdasan buatan untuk membantu mengenali gangguan pada daun cabai dari foto yang Anda unggah.</p><p class="body-copy mb-0">Hasil analisis dapat menjadi informasi awal untuk mengamati kondisi tanaman dan menentukan langkah perawatan berikutnya.</p><ul class="value-list"><li><span class="check">✓</span><span><strong>Mudah digunakan</strong><br>Mulai pemantauan cukup dengan mengunggah foto daun.</span></li><li><span class="check">✓</span><span><strong>Informasi yang lebih terarah</strong><br>Analisis gambar membantu Anda mengenali tanda gangguan tanaman.</span></li><li><span class="check">✓</span><span><strong>Dirancang untuk cabai</strong><br>Fokus pada kebutuhan pemantauan tanaman cabai.</span></li></ul></div><div class="col-lg-6"><div class="image-panel" role="img" aria-label="Tanaman cabai yang tumbuh subur"></div></div></div></div></section>
 
-      <footer id="sticky-footer" class="footer bg-dark text-white text-center py-2"">
-        &copy; 2023 Kelompok 2
-      </footer>
-    
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-      <script src="static/js/script.js"></script>
-      <script src="static/js/cript2.js" ></script>
-      <script src="static/js/script3.js" ></script>
-      <script>
-        function showPage(page) {
-            window.location.href = page;
-        }
-      </script>
+      <section class="why-section"><div class="container"><div class="row g-4 align-items-end mb-4 mb-lg-5"><div class="col-lg-5 why-heading"><span class="section-label">Mengapa Chillify</span><h2>Pemantauan yang terasa lebih dekat.</h2><p class="mb-0">Kami merancang Chillify agar teknologi dapat menjadi titik awal yang praktis dalam merawat tanaman.</p></div></div><div class="row g-4"><div class="col-md-4"><article class="reason-card"><span class="reason-number">01</span><h3>Berbasis gambar</h3><p>Gunakan dokumentasi visual daun sebagai awal untuk mengamati kondisi tanaman cabai.</p></article></div><div class="col-md-4"><article class="reason-card"><span class="reason-number">02</span><h3>Langkah yang ringkas</h3><p>Alur pemantauan dibuat sederhana agar dapat digunakan oleh pemula maupun pegiat kebun.</p></article></div><div class="col-md-4"><article class="reason-card"><span class="reason-number">03</span><h3>Mendukung perawatan</h3><p>Dapatkan gambaran awal untuk membantu menentukan tindakan perawatan dengan lebih yakin.</p></article></div></div></div></section>
 
-      <a href="{{ url_for('index') }}" class="prev-page-link">
-        <span class="next-page-arrow">&larr;</span>
-      </a>
-      
-      <a href="{{ url_for('layanan') }}" class="next-page-link">
-        <span class="next-page-arrow">&rarr;</span>
-      </a>
-  
-    </body>
+      <section class="cta"><div class="container"><h2>Siap mulai mengenali kondisi tanaman Anda?</h2><p>Unggah foto daun cabai dan mulai pemantauan bersama Chillify.</p><a class="btn btn-lime" href="{{ url_for('layanan') }}">Buka layanan pemantauan <span aria-hidden="true">→</span></a></div></section>
+    </main>
+
+    <footer><div class="container d-flex flex-column flex-sm-row justify-content-between gap-1"><span>© 2023 Kelompok 2</span><span>Chillify · Pemantauan tanaman cabai</span></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
 </html>

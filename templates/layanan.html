@@ -1,301 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <title>Tentang</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Layanan deteksi kondisi daun cabai dari foto oleh Chillify.">
+    <title>Layanan Deteksi | Chillify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        .normal-text {
-            font-weight: normal;
-            font-size: 22px;
-          }
+      :root { --forest: #153d2b; --leaf: #2f7d4d; --lime: #d8f06a; --cream: #f6f5ef; --ink: #1a2d23; }
+      * { box-sizing: border-box; }
+      body { color: var(--ink); background: var(--cream); font-family: "DM Sans", sans-serif; }
+      .navbar { background: rgba(21,61,43,.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.12); }
+      .navbar-brand { font-size: 1.4rem; font-weight: 700; letter-spacing: -.04em; }.brand-mark { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: .45rem; border-radius: 9px; color: var(--forest); background: var(--lime); font-size: .95rem; }
+      .nav-link { color: rgba(255,255,255,.76) !important; font-size: .94rem; font-weight: 500; }.nav-link:hover, .nav-link.active { color: #fff !important; }.navbar-toggler { border-color: rgba(255,255,255,.45); }.navbar-toggler:focus { box-shadow: 0 0 0 .18rem rgba(216,240,106,.32); }
+      .page-hero { padding: 9.75rem 0 4.25rem; color: #fff; background: linear-gradient(115deg, rgba(18,57,39,.96), rgba(33,100,63,.9)), url("{{ url_for('static', filename='imagekebun/daun1.png') }}") right 15% center/220px no-repeat; }
+      .eyebrow, .section-label { color: var(--lime); font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }.eyebrow { display: flex; align-items: center; gap: .55rem; }.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+      h1, h2 { font-family: "Playfair Display", serif; font-weight: 700; letter-spacing: -.04em; }h1 { max-width: 700px; margin: .85rem 0 1rem; font-size: clamp(2.7rem, 6vw, 4.5rem); line-height: 1.06; }.hero-copy { max-width: 590px; margin: 0; color: rgba(255,255,255,.8); font-size: 1.07rem; line-height: 1.75; }
+      .content-section { padding: 5.5rem 0; }.section-label { color: var(--leaf); }h2 { margin: .6rem 0 1rem; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; }.section-copy { max-width: 610px; color: #587164; line-height: 1.75; }
+      .step-card { height: 100%; padding: 1.5rem; border: 1px solid #e0e7dc; border-radius: 18px; background: #fff; }.step-number { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 1.2rem; border-radius: 11px; background: #e6f2dc; color: var(--leaf); font-size: .9rem; font-weight: 700; }.step-card h3 { font-size: 1.08rem; font-weight: 700; }.step-card p { margin: 0; color: #668073; font-size: .94rem; line-height: 1.65; }
+      .detector-section { padding: 5.5rem 0; background: #eaf0e6; }.detector-panel { overflow: hidden; border: 1px solid rgba(47,125,77,.14); border-radius: 23px; background: #fff; box-shadow: 0 18px 40px rgba(23,61,40,.08); }.form-panel { padding: clamp(1.6rem, 4vw, 3rem); }.form-panel h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); }.upload-zone { position: relative; display: grid; place-items: center; min-height: 215px; margin: 1.7rem 0 1rem; padding: 1.2rem; border: 1.5px dashed #9dbca5; border-radius: 16px; background: #f8fbf6; cursor: pointer; text-align: center; transition: background .2s, border-color .2s; }.upload-zone:hover, .upload-zone.has-file { border-color: var(--leaf); background: #eef7e9; }.upload-zone input { position: absolute; inset: 0; z-index: 2; width: 100%; opacity: 0; cursor: pointer; }.upload-prompt, .image-preview { transition: opacity 250ms ease, transform 250ms ease; }.upload-prompt { pointer-events: none; }.image-preview { position: absolute; inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); border-radius: 11px; object-fit: contain; opacity: 0; transform: scale(.97); pointer-events: none; }.has-preview .upload-prompt { opacity: 0; transform: scale(.97); }.has-preview .image-preview { opacity: 1; transform: scale(1); }.upload-icon { display: grid; place-items: center; width: 45px; height: 45px; margin: 0 auto .8rem; border-radius: 14px; background: #dff0d5; color: var(--leaf); font-size: 1.5rem; }.upload-zone strong { display: block; font-size: .98rem; }.upload-zone small { display: block; margin-top: .35rem; color: #6a8073; }.file-name { min-height: 1.4rem; margin: 0 0 1.1rem; color: #557363; font-size: .86rem; }.btn-lime { position:relative; width: 100%; padding: .9rem 1.2rem; border: 0; border-radius: 999px; background: var(--lime); color: var(--forest); font-weight: 700; transition: background .2s ease, opacity .2s ease; }.btn-lime:hover { background: #e5f782; color: var(--forest); }.btn-lime:disabled { cursor: wait; opacity: .78; }.button-label, .button-loading { transition: opacity .2s ease, transform .2s ease; }.button-loading { position: absolute; left: 50%; opacity: 0; transform: translate(-50%, 6px); white-space: nowrap; }.is-loading .button-label { opacity: 0; transform: translateY(-6px); }.is-loading .button-loading { opacity: 1; transform: translate(-50%, 0); }.loading-spinner { display: inline-block; width: .85rem; height: .85rem; margin-right: .35rem; border: 2px solid rgba(21,61,43,.3); border-top-color: var(--forest); border-radius: 50%; animation: spin .75s linear infinite; vertical-align: -1px; }@keyframes spin { to { transform: rotate(360deg); } }.request-status { min-height: 1.4rem; margin: .9rem 0 0; font-size: .88rem; }.request-status.error { color: #b42318; }.request-status.success { color: #2f7d4d; }
+      .result-panel { display: flex; align-items: center; padding: clamp(1.6rem, 4vw, 3rem); background: linear-gradient(145deg, #173d2c, #245f3e); color: #fff; }.result-panel-inner { width: 100%; }.result-label { color: var(--lime); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }.result-panel h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); }.result-image { width: 100%; max-height: 320px; margin: 1.35rem 0; border-radius: 14px; object-fit: contain; background: rgba(255,255,255,.12); }.result-description { margin: 0; color: rgba(255,255,255,.8); line-height: 1.7; }.empty-result { padding: 2rem 0; color: rgba(255,255,255,.76); line-height: 1.7; }.empty-symbol { display: grid; place-items: center; width: 55px; height: 55px; margin-bottom: 1rem; border: 1px solid rgba(216,240,106,.38); border-radius: 50%; color: var(--lime); font-size: 1.35rem; }.alert { margin-top: 1rem; border: 0; border-radius: 12px; font-size: .9rem; }
+      footer { padding: 1.2rem 0; background: #102c1f; color: rgba(255,255,255,.7); font-size: .9rem; }@media (max-width: 991.98px) { .navbar-collapse { padding: .8rem 0 .2rem; } .page-hero { background-size: 170px; background-position: 105% center; } .result-panel { min-height: 380px; } }@media (max-width: 575.98px) { .page-hero { padding: 8.5rem 0 3.5rem; background-image: linear-gradient(115deg, rgba(18,57,39,.96), rgba(33,100,63,.9)); } .content-section, .detector-section { padding: 4rem 0; } }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top"><div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true">♧</span>Chillify</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="mainNavigation"><ul class="navbar-nav ms-auto gap-lg-2"><li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Beranda</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('tentang') }}">Tentang</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('layanan') }}">Layanan</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('kebun') }}">Kebun</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('tim') }}">Tim</a></li><li class="nav-item"><a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a></li></ul></div></div></nav>
+    <main>
+      <section class="page-hero"><div class="container"><p class="eyebrow">Layanan deteksi</p><h1>Kenali kondisi daun cabai dari foto Anda.</h1><p class="hero-copy">Unggah foto daun cabai dan biarkan Chillify membantu memberikan gambaran awal mengenai kondisi tanaman Anda.</p></div></section>
+      <section class="content-section"><div class="container"><div class="row align-items-end mb-4 mb-lg-5"><div class="col-lg-7"><span class="section-label">Tiga langkah mudah</span><h2>Pemantauan dimulai dari satu foto.</h2></div><div class="col-lg-5"><p class="section-copy mb-0">Siapkan foto daun yang cukup jelas agar sistem dapat memprosesnya dengan lebih baik.</p></div></div><div class="row g-4"><div class="col-md-4"><article class="step-card"><span class="step-number">01</span><h3>Pilih foto daun</h3><p>Gunakan foto daun cabai dengan objek terlihat jelas dan pencahayaan yang cukup.</p></article></div><div class="col-md-4"><article class="step-card"><span class="step-number">02</span><h3>Unggah ke Chillify</h3><p>Pilih file gambar dari perangkat Anda, lalu mulai proses pemantauan.</p></article></div><div class="col-md-4"><article class="step-card"><span class="step-number">03</span><h3>Lihat hasil analisis</h3><p>Hasil prediksi akan ditampilkan setelah sistem selesai memproses gambar.</p></article></div></div></div></section>
+      <section class="detector-section" id="deteksi"><div class="container"><div class="detector-panel"><div class="row g-0">
+        <div class="col-lg-6"><div class="form-panel"><span class="section-label">Mulai pemantauan</span><h2>Unggah foto tanaman cabai.</h2><p class="section-copy">Format gambar yang disarankan: JPG, JPEG, atau PNG.</p>
+          <!-- Form is progressively enhanced with fetch so analysis does not reload the page. -->
+          <form id="detectorForm" action="{{ url_for('layanan') }}" data-api-url="{{ url_for('api_deteksi') }}" method="POST" enctype="multipart/form-data">
+            <label class="upload-zone" id="uploadZone" for="input_gambar"><input type="file" id="input_gambar" name="file" accept="image/jpeg,image/png" required><span class="upload-prompt"><span class="upload-icon" aria-hidden="true">↑</span><strong>Pilih file gambar</strong><small>atau seret foto ke area ini</small></span><img class="image-preview" id="imagePreview" alt="Preview gambar yang dipilih"></label>
+            <p class="file-name" id="fileName" aria-live="polite">Belum ada file dipilih.</p>
+            <button class="btn btn-lime" id="analyzeButton" type="submit"><span class="button-label">Analisis foto <span aria-hidden="true">→</span></span><span class="button-loading"><span class="loading-spinner" aria-hidden="true"></span>Menganalisis foto...</span></button>
+            <p class="request-status" id="requestStatus" aria-live="polite">{% if error_message %}{{ error_message }}{% endif %}</p>
+          </form>
+        </div></div>
+        <div class="col-lg-6"><div class="result-panel"><div class="result-panel-inner"><p class="result-label">Hasil pemantauan</p>
+          <div id="resultContent">
+            {% if predictions is defined %}<h2>Hasil analisis foto Anda</h2>{% if predictions %}<img src="{{ result_image }}" alt="Hasil deteksi pada foto daun cabai" class="result-image"><p class="result-description">{{ result_description }}</p>{% else %}<div class="empty-result"><div class="empty-symbol" aria-hidden="true">✓</div><p class="mb-0">Tidak ada objek yang terdeteksi pada gambar ini. Coba gunakan foto daun yang lebih dekat dan jelas.</p></div>{% endif %}{% else %}<h2>Hasil akan muncul di sini.</h2><div class="empty-result"><div class="empty-symbol" aria-hidden="true">⌁</div><p class="mb-0">Pilih foto daun cabai, lalu tekan tombol <strong>Analisis foto</strong> untuk memulai.</p></div>{% endif %}
+          </div>
+        </div></div></div>
+      </div></div></div></section>
+    </main>
+    <footer><div class="container d-flex flex-column flex-sm-row justify-content-between gap-1"><span>© 2023 Kelompok 2</span><span>Chillify · Pemantauan tanaman cabai</span></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      const form = document.getElementById('detectorForm');
+      const input = document.getElementById('input_gambar');
+      const fileName = document.getElementById('fileName');
+      const uploadZone = document.getElementById('uploadZone');
+      const imagePreview = document.getElementById('imagePreview');
+      const analyzeButton = document.getElementById('analyzeButton');
+      const requestStatus = document.getElementById('requestStatus');
+      const resultContent = document.getElementById('resultContent');
 
-        .fixed-section {
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 100%;
-             z-index: 100;
-             background-color: rgba(4, 3, 3, 0.8);
-             transition: background-color 0.5s;
-         }
-         
-         .service-box {
-             background: #f9f9f9;
-             padding: 20px;
-             margin: 10px;
-             text-align: center;
-         }
+      function createResultElement(tagName, className, text) {
+        const element = document.createElement(tagName);
+        if (className) element.className = className;
+        if (text) element.textContent = text;
+        return element;
+      }
 
-         .animated {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
-          }
-
-        .animated.animate {
-            opacity: 1;
-            transform: translateY(0);
-         }
-
-        body {
-            background-color: rgb(228, 219, 219); 
+      function showResult(data) {
+        resultContent.replaceChildren(createResultElement('h2', '', 'Hasil analisis foto Anda'));
+        if (data.predictions.length) {
+          const image = createResultElement('img', 'result-image');
+          image.src = data.result_image;
+          image.alt = 'Hasil deteksi pada foto daun cabai';
+          resultContent.append(image, createResultElement('p', 'result-description', data.result_description));
+          return;
         }
 
-        .content {
-              margin-top: 30px;
-              padding-bottom: 10px;
-          }
+        const emptyResult = createResultElement('div', 'empty-result');
+        emptyResult.append(createResultElement('div', 'empty-symbol', '✓'), createResultElement('p', 'mb-0', data.result_description));
+        resultContent.append(emptyResult);
+      }
 
-        .content2 {
-              margin-top: 15px; 
-              padding-bottom: 80px; 
-          }
+      let previewUrl;
+      input.addEventListener('change', () => {
+        const file = input.files[0];
+        fileName.textContent = file ? `File dipilih: ${file.name}` : 'Belum ada file dipilih.';
+        uploadZone.classList.toggle('has-file', Boolean(file));
+        uploadZone.classList.toggle('has-preview', Boolean(file));
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
+        if (file) {
+          previewUrl = URL.createObjectURL(file);
+          imagePreview.src = previewUrl;
+        } else {
+          imagePreview.removeAttribute('src');
+        }
+      });
 
-          .content3 {
-              margin-top: 30px; 
-              padding-bottom: 10px; 
-          }
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!input.files.length) {
+          requestStatus.textContent = 'Pilih file gambar terlebih dahulu.';
+          requestStatus.className = 'request-status error';
+          return;
+        }
 
-          .next-page-link {
-              position: fixed;
-              bottom: 40px; 
-              right: 20px; 
-              background-color: rgb(3, 168, 30); 
-              color: #fff; 
-              border-radius: 50%;
-              width: 40px; 
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 24px; 
-              text-decoration: none;
-            }
+        analyzeButton.disabled = true;
+        analyzeButton.classList.add('is-loading');
+        requestStatus.textContent = 'Foto sedang dikirim dan dianalisis.';
+        requestStatus.className = 'request-status';
 
-            .prev-page-link {
-              position: fixed;
-              bottom: 20px; 
-              right: 20px; 
-              background-color:  rgb(3, 168, 30); 
-              color: #fff;
-              border-radius: 50%; 
-              width: 40px; 
-              height: 40px; 
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 24px; 
-              text-decoration: none;
-            }
-            .prev-page-link, .next-page-link {
-              position: fixed;
-              bottom: 50px; 
-              font-size: 24px; 
-            }
+        try {
+          const response = await fetch(form.dataset.apiUrl, { method: 'POST', body: new FormData(form) });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || 'Analisis gambar gagal.');
 
-            .prev-page-link {
-              left: 20px; 
-            }
-
-            .result-image {
-              width: 300px;
-              height: 300px;
-              /* Pilihan gaya tambahan, seperti memusatkan gambar */
-              display: block;
-              margin-left: auto;
-              margin-right: auto;
-            }
-
-            #sticky-footer {
-              position: fixed;
-              bottom: 0;
-              width: 100%;
-           }
-     </style>
-  </head>
-
-  <body>
-    <!--   Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-section" id="navbar">
-        <div class="container ">
-            <a id="Chillify" class="navbar-brand" href="#">Chillify</a>
-            <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link " href="{{ url_for('index') }}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="{{ url_for('tentang') }}">Tentang</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('layanan') }}">Layanan</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('kebun') }}">Kebun</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('tim') }}">Tim</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('kontak') }}">Kontak</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <!-- Navbar End  -->
-
-    <div class="container mt-5 " id="Layanan">
-        <h1 class="text-center animated" data-animation="fadeIn" data-delay="0">Layanan</h1>
-    </div>
-    
-        <div class="container mt-5"  >
-            <h1 class="text-center normal-text animated" data-animation="fadeIn" data-delay="300" >Kami menawarkan layanan unik yang akan membantu Anda memantau pertumbuhan cabai Anda dengan mudah. Layanan kami mencakup:</h1>
-            <div class="row">
-                <div class="container mt-5 content">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-3 mb-4"  >
-                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="300" >
-                                <div ><i class="bx bx-chat"></i></div>
-                                <h4><a>Pemantauan Real-Time</a></h4>
-                                <p>Pantau perkembangan cabai Anda setiap saat dengan data yang akurat.</p>
-                            </div>
-                        </div>
-                
-                        <div class="col-md-6 col-lg-3 mb-4" >
-                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="500" >
-                                <div class="icon"><i class="bx bx-camera"></i></div>
-                                <h4><a>Analisis Data</a></h4>
-                                <p>Kami memberikan analisis data yang membantu Anda memahami kebutuhan tanaman cabai Anda.</p>
-                            </div>
-                        </div>
-                
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="service-box text-center animated" data-animation="fadeIn" data-delay="800"  >
-                                <div class="icon"><i class="bx bx-chat"></i></div>
-                                <h4><a>Pantau dari Mana Saja</a></h4>
-                                <p>Pantau kebun cabai Anda dari mana saja dengan akses internet.</p>
-                            </div>
-                        </div>
-                      </div>  
-                    </div>
-                </div>
-          </div>
-            
-            <div class="text-center mt-3 animated" data-animation="fadeIn" data-delay="300" style="padding: 10px;">
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 2" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-top: 0px; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-              <div style="display: inline-block; margin-right: 10px; margin-left: 50px;">
-                  <img src="static/imagekebun/daun1.png" alt="Pemisah 1" style="width: 70px; height: 70px;">
-              </div>
-          </div>
-            
-          <section id="imagedetection" class="services">
-            <div class="container text-center animated" data-animation="fadeIn" data-delay="300">
-                <div class="content3">
-                    <p>Siap untuk memulai? Klik tombol di bawah ini untuk memulai pemantauan sekarang!</p>
-                </div>
-            </div>
-        
-            <div id="aplikasi" class="container content2">
-                <div class="row justify-content-start">
-                    <div class="col-md-6 left-section">
-                        <div class="right-content animated" data-animation="fadeIn" data-delay="300">
-                            <div class="section-title">
-                                <h2>Cara Penggunaan Sistem Deteksi</h2>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon">
-                                    <ion-icon name="share-outline"></ion-icon>
-                                </div>
-                                <div class="step-content">
-                                    <h5><strong>1. Klik tombol Pantau Sekarang</strong></h5>
-                                    <p>Anda perlu menyiapkan gambar tanaman cabai Anda. Pastikan format gambar yang diunggah adalah .jpg</p>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon">
-                                    <ion-icon name="rocket-outline"></ion-icon>
-                                </div>
-                                <div class="step-content">
-                                    <h5><strong>2. Menunggu Hasil Keluar</strong></h5>
-                                    <p>Setelah unggah gambar, sistem kami akan memproses dan hasil dari prediksi akan muncul segera.</p>
-                                </div>
-                            </div>
-                            <form method="POST" enctype="multipart/form-data">
-                                <div class="image-preview text-left">
-                                    <label for="input_gambar">Pilih File Gambar</label>
-                                    <input type="file" id="input_gambar" name="file">
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-light btn-lg" type="submit"><i class="fas fa-camera"></i> Pantau Sekarang</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-        
-                    <div id="hasil_prediksi">
-                      {% if predictions %}
-                          <img src="{{ result_image }}" alt="Hasil Prediksi" class="result-image">
-                          <p>{{ result_description }}</p>
-                      {% else %}
-                          <p>Tidak ada hasil prediksi.</p>
-                      {% endif %}
-                    </div>
-                  
-                    {% if error_message %}
-                        <p style="color: red;">{{ error_message }}</p>
-                    {% endif %}
-                  
-                </div>
-            </div>
-          </section>
-
-            <footer id="sticky-footer" class="footer bg-dark text-white text-center py-2">
-              &copy; 2023 Kelompok 2
-            </footer>
-            
-
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1U"></script>
-            <script src="static/js/script.js"></script>
-            <script src="static/js/cript2.js" ></script>
-            <script src="static/js/script3.js" ></script>
-            <script>
-              function showPage(page) {
-                  window.location.href = page;
-              }
-            </script>
-
-            <a href="{{ url_for('tentang') }}" class="prev-page-link">
-              <span class="next-page-arrow">&larr;</span>
-            </a>
-
-            <a href="{{ url_for('kebun') }}" class="next-page-link">
-              <span class="next-page-arrow">&rarr;</span>
-            </a>
-        </body>
-</html> 
+          showResult(data);
+          requestStatus.textContent = 'Analisis selesai. Hasil telah diperbarui.';
+          requestStatus.className = 'request-status success';
+        } catch (error) {
+          requestStatus.textContent = error.message || 'Gagal menganalisis gambar. Silakan coba lagi.';
+          requestStatus.className = 'request-status error';
+        } finally {
+          analyzeButton.disabled = false;
+          analyzeButton.classList.remove('is-loading');
+        }
+      });
+    </script>
+  </body>
+</html>

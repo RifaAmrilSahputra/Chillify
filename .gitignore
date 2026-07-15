@@ -1,0 +1,9 @@
+# Rahasia dan konfigurasi lokal
+.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# Hasil prediksi yang dibuat saat aplikasi berjalan
+static/results/
