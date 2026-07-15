@@ -174,18 +174,16 @@ This project is licensed under the MIT License.
 
 ---
 
-## Author
+# 👨‍💻 Developer
 
-**Rifa Amril Sahputra**
+### Amril Nadapdap
 
-- GitHub: https://github.com/RifaAmrilSahputra
-- LinkedIn: https://linkedin.com/in/rifaamrilsahputra
+GitHub:
+https://github.com/RifaAmrilSahputra
+
+LinkedIn:
+https://linkedin.com/in/rifaamrilsahputra
 
 ---
 
-## Acknowledgements
-
-- Flask
-- Roboflow
-- YOLO
-- Python Community
+⭐ If you find this project useful, consider giving it a star.
